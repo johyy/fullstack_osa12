@@ -1,11 +1,11 @@
 services:
-  frontend:
+  app:
     build:
       context: ./todo-frontend
       dockerfile: Dockerfile
     container_name: todo-frontend-prod
 
-  backend:
+  server:
     build:
       context: ./todo-backend
       dockerfile: Dockerfile
@@ -25,8 +25,7 @@ services:
       - 8080:80
     container_name: reverse-proxy
     depends_on:
-      - frontend
-      - backend
+      - app
 
   mongo:
     image: mongo
